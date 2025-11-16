@@ -8,7 +8,6 @@
 * compatibility/config-api：无需配置文件，使用 API 启动 Dubbo-go 服务
 * compatibility/configcenter：多种配置中心（如 zookeeper、nacos、apollo）用法示例
 * compatibility/direct：直连调用示例，无需注册中心
-* compatibility/filter：内置及自定义 filter 示例（如 custom_filter、tpslimit）
 * compatibility/game：游戏服务示例
 * compatibility/generic：泛化调用示例
 * compatibility/mesh：基于 Envoy 的服务网格部署示例
@@ -30,7 +29,11 @@
 * context：通过 go context 传递用户数据（attachments）的示例
 * error：Dubbo-go 错误处理示例
 * filter：内置及自定义 filter 用法示例
+  * custom: 自定义过滤器实现示例（客户端和服务端）
+  * token: Token 过滤器示例
+  * sentinel: Sentinel 过滤器示例（流量控制和熔断）
   * polaris/limit: 使用Polaris的服务限流功能示例
+  * tpslimit: 自定义 TPS 限流策略和拒绝执行处理器示例
 * healthcheck：服务健康检查示例
 * helloworld：Dubbo-go 入门 Hello World 示例
 * integrate_test：Dubbo-go 示例集成测试用例

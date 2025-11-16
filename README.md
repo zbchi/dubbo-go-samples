@@ -12,7 +12,6 @@
 * compatibility/config-api: How to use Dubbo-go by APIs without configuration files
 * compatibility/configcenter: Usage of different config centers, including zookeeper, nacos and apollo
 * compatibility/direct: Direct invocation example
-* compatibility/filter: Examples of different filters, including custom_filter and tpslimit
 * compatibility/game: Game service example
 * compatibility/generic: Generic invocation example
 * compatibility/mesh: Proxy service mesh example showing how to deploy Dubbo-go services with Envoy on Kubernetes
@@ -34,7 +33,11 @@
 * context: Example of passing user data (attachments) via Go context between client and server
 * error: Error handling examples in Dubbo-go
 * filter: Demonstrates the use of built-in and custom filters in Dubbo-go
+  * custom: Custom filter implementation example (client and server)
+  * token: Token filter example
+  * sentinel: Sentinel filter example for flow control and circuit breaking
   * polaris/limit: Use Polaris as tps limiter
+  * tpslimit: Custom TPS limit strategy and rejected execution handler example
 * healthcheck: Service health check example
 * helloworld: Basic hello world example for Dubbo-go
 * integrate_test: Integration test cases for Dubbo-go samples
