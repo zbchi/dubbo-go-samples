@@ -15,39 +15,21 @@
  * limitations under the License.
  */
 
-package main
+syntax = "proto3";
 
-import (
-	"context"
-	"time"
+package greet;
 
-	"dubbo.apache.org/dubbo-go/v3/client"
+option go_package = "github.com/apache/dubbo-go-samples/cors/proto;greet";
 
-	_ "dubbo.apache.org/dubbo-go/v3/imports"
-	"github.com/dubbogo/gost/log/logger"
-
-	greet "github.com/apache/dubbo-go-samples/helloworld/proto"
-)
-
-func main() {
-	cli, err := client.NewClient(
-		client.WithClientURL("127.0.0.1:20000"),
-	)
-	if err != nil {
-		logger.Fatalf("failed to create client: %v", err)
-	}
-
-	svc, err := greet.NewGreetService(cli)
-	if err != nil {
-		logger.Fatalf("failed to create greet service: %v", err)
-	}
-
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-
-	resp, err := svc.Greet(ctx, &greet.GreetRequest{Name: "hello world"})
-	if err != nil {
-		logger.Fatalf("failed to greet: %v", err)
-	}
-	logger.Infof("Greet response: %s", resp.Greeting)
+message GreetRequest {
+  string name = 1;
 }
+
+message GreetResponse {
+  string greeting = 1;
+}
+
+service GreetService {
+  rpc Greet(GreetRequest) returns (GreetResponse) {}
+}
+

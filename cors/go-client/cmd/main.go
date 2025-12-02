@@ -19,14 +19,12 @@ package main
 
 import (
 	"context"
-	"time"
 
 	"dubbo.apache.org/dubbo-go/v3/client"
-
 	_ "dubbo.apache.org/dubbo-go/v3/imports"
 	"github.com/dubbogo/gost/log/logger"
 
-	greet "github.com/apache/dubbo-go-samples/helloworld/proto"
+	greet "github.com/apache/dubbo-go-samples/cors/proto"
 )
 
 func main() {
@@ -42,12 +40,11 @@ func main() {
 		logger.Fatalf("failed to create greet service: %v", err)
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-
-	resp, err := svc.Greet(ctx, &greet.GreetRequest{Name: "hello world"})
+	resp, err := svc.Greet(context.Background(), &greet.GreetRequest{Name: "World"})
 	if err != nil {
-		logger.Fatalf("failed to greet: %v", err)
+		logger.Errorf("failed to call Greet: %v", err)
+		return
 	}
+
 	logger.Infof("Greet response: %s", resp.Greeting)
 }

@@ -22,17 +22,18 @@ import (
 
 	_ "dubbo.apache.org/dubbo-go/v3/imports"
 	"dubbo.apache.org/dubbo-go/v3/protocol"
+	"dubbo.apache.org/dubbo-go/v3/protocol/triple"
 	"dubbo.apache.org/dubbo-go/v3/server"
 	"github.com/dubbogo/gost/log/logger"
 
-	greet "github.com/apache/dubbo-go-samples/helloworld/proto"
+	greet "github.com/apache/dubbo-go-samples/cors/proto"
 )
 
 type GreetTripleServer struct {
 }
 
 func (srv *GreetTripleServer) Greet(ctx context.Context, req *greet.GreetRequest) (*greet.GreetResponse, error) {
-	resp := &greet.GreetResponse{Greeting: req.Name}
+	resp := &greet.GreetResponse{Greeting: "Hello " + req.Name + " from CORS-enabled server!"}
 	return resp, nil
 }
 
@@ -40,7 +41,16 @@ func main() {
 	srv, err := server.NewServer(
 		server.WithServerProtocol(
 			protocol.WithPort(20000),
-			protocol.WithTriple(),
+			protocol.WithTriple(
+				triple.WithCORS(
+					triple.CORSAllowOrigins("http://example.com", "https://*.sub.example.com"),
+					triple.CORSAllowMethods("POST", "GET", "OPTIONS"),
+					triple.CORSAllowHeaders("Content-Type", "Authorization"),
+					triple.CORSExposeHeaders("X-Custom-Header"),
+					triple.CORSAllowCredentials(true),
+					triple.CORSMaxAge(3600),
+				),
+			),
 		),
 	)
 	if err != nil {
@@ -51,6 +61,7 @@ func main() {
 		logger.Fatalf("failed to register greet service handler: %v", err)
 	}
 
+	logger.Info("CORS-enabled server is starting on port 20000...")
 	if err := srv.Serve(); err != nil {
 		logger.Fatalf("failed to serve: %v", err)
 	}
