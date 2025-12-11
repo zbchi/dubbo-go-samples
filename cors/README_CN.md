@@ -22,8 +22,7 @@ CORS 允许运行在一个源上的 Web 应用程序访问来自另一个源的�
 ### 启动服务器
 
 ```bash
-cd cors/go-server/cmd
-go run main.go
+go run go-server/cmd/main.go
 ```
 
 服务器将在端口 `20000` 上启动，并启用 CORS。
