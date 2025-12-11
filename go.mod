@@ -9,7 +9,7 @@ require (
 	github.com/alibaba/sentinel-golang v1.0.4
 	github.com/apache/dubbo-go-hessian2 v1.12.5
 	github.com/dubbogo/go-zookeeper v1.0.4-0.20211212162352-f9d2183d89d5
-	github.com/dubbogo/gost v1.14.1
+	github.com/dubbogo/gost v1.14.3
 	github.com/dubbogo/grpc-go v1.42.10
 	github.com/dubbogo/triple v1.2.2-rc4
 	github.com/gin-contrib/sessions v1.0.2
@@ -179,6 +179,7 @@ require (
 )
 
 replace (
+	dubbo.apache.org/dubbo-go/v3 => github.com/zbchi/dubbo-go/v3 cors
 	go.opentelemetry.io/otel => go.opentelemetry.io/otel v1.26.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace => go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.21.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc => go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.21.0

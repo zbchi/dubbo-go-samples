@@ -19,16 +19,7 @@ CORS 允许运行在一个源上的 Web 应用程序访问来自另一个源的�
 
 ## 如何运行
 
-### 1. 生成 Proto 文件
-
-首先，生成 proto 文件：
-
-```bash
-cd cors/proto
-protoc --go_out=. --go-triple_out=. greet.proto
-```
-
-### 2. 启动服务器
+### 启动服务器
 
 ```bash
 cd cors/go-server/cmd
@@ -37,14 +28,6 @@ go run main.go
 
 服务器将在端口 `20000` 上启动，并启用 CORS。
 
-### 3. 运行客户端
-
-在另一个终端中：
-
-```bash
-cd cors/go-client/cmd
-go run main.go
-```
 
 ## CORS 配置详情
 
