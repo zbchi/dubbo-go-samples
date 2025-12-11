@@ -19,32 +19,13 @@ The server is configured with the following CORS settings:
 
 ## How to Run
 
-### 1. Generate Proto Files
-
-First, generate the proto files:
+### Start the Server
 
 ```bash
-cd cors/proto
-protoc --go_out=. --go-triple_out=. greet.proto
-```
-
-### 2. Start the Server
-
-```bash
-cd cors/go-server/cmd
-go run main.go
+go run go-server/cmd/main.go
 ```
 
 The server will start on port `20000` with CORS enabled.
-
-### 3. Run the Client
-
-In another terminal:
-
-```bash
-cd cors/go-client/cmd
-go run main.go
-```
 
 ## CORS Configuration Details
 
